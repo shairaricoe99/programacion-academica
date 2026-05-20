@@ -1,4 +1,4 @@
-// Edge function: streaming chat con Lovable AI Gateway
+// Edge function: streaming chat con IA
 // Recibe `messages` y un `context` dinámico (snapshot vivo del sistema) desde el cliente.
 
 const corsHeaders = {
@@ -51,12 +51,12 @@ Deno.serve(async (req) => {
   try {
     const { messages, context } = await req.json();
 
-    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
+    const AI_API_KEY = Deno.env.get("AI_API_KEY");
 
-    if (!LOVABLE_API_KEY) {
+    if (!AI_API_KEY) {
       return new Response(
         JSON.stringify({
-          error: "LOVABLE_API_KEY no configurada",
+          error: "AI_API_KEY no configurada",
         }),
         {
           status: 500,
@@ -75,7 +75,7 @@ Deno.serve(async (req) => {
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${LOVABLE_API_KEY}`,
+          Authorization: `Bearer ${AI_API_KEY}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -115,7 +115,7 @@ Deno.serve(async (req) => {
         return new Response(
           JSON.stringify({
             error:
-              "Créditos agotados. Agrega créditos en Configuración de Lovable Cloud.",
+              "Créditos agotados. Agrega créditos a tu proveedor de IA.",
           }),
           {
             status: 402,
