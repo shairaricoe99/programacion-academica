@@ -7,7 +7,7 @@ import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { AppStateProvider } from "@/contexts/AppStateContext";
 import AppLayout from "@/components/AppLayout";
 import Login from "@/pages/Login";
-import Asistente from "./pages/Asistente";
+import Asistente from "@/pages/Asistente";
 
 // Admin pages
 import AdminDashboard from "@/pages/admin/AdminDashboard";
