@@ -16,6 +16,7 @@ import {
   LogOut,
   Bell,
   Search,
+  Sparkles,
 } from "lucide-react";
 import { useAuth, UserRole } from "@/contexts/AuthContext";
 import uniLogo from "@/assets/unilibre-logo.png";
@@ -34,6 +35,7 @@ const navByRole: Record<UserRole, NavItem[]> = {
     { label: "Alertas de Conflictos", path: "/alertas", icon: <AlertTriangle size={20} /> },
     { label: "Estadísticas de Salones", path: "/estadisticas", icon: <BarChart3 size={20} /> },
     { label: "Usuarios y Roles", path: "/usuarios", icon: <Shield size={20} /> },
+    { label: "Asistente IA", path: "/asistente", icon: <Sparkles size={20} /> },
   ],
   secretaria: [
     { label: "Inicio", path: "/", icon: <Home size={20} /> },
@@ -43,11 +45,13 @@ const navByRole: Record<UserRole, NavItem[]> = {
     { label: "Asignaturas y Grupos", path: "/asignaturas", icon: <FileText size={20} /> },
     { label: "Consultas y Reportes", path: "/reportes", icon: <BarChart3 size={20} /> },
     { label: "Conflictos", path: "/conflictos", icon: <AlertTriangle size={20} /> },
+    { label: "Asistente IA", path: "/asistente", icon: <Sparkles size={20} /> },
   ],
   docente: [
     { label: "Inicio", path: "/", icon: <Home size={20} /> },
     { label: "Mi Horario", path: "/mi-horario", icon: <CalendarDays size={20} /> },
     { label: "Disponibilidad", path: "/disponibilidad", icon: <Clock size={20} /> },
+    { label: "Asistente IA", path: "/asistente", icon: <Sparkles size={20} /> },
   ],
 };
 

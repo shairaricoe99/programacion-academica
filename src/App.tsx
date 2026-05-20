@@ -7,6 +7,7 @@ import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { AppStateProvider } from "@/contexts/AppStateContext";
 import AppLayout from "@/components/AppLayout";
 import Login from "@/pages/Login";
+import Asistente from "./pages/Asistente";
 
 // Admin pages
 import AdminDashboard from "@/pages/admin/AdminDashboard";
@@ -51,6 +52,7 @@ function ProtectedRoutes() {
             <Route path="/alertas" element={<AdminAlertas />} />
             <Route path="/estadisticas" element={<AdminEstadisticas />} />
             <Route path="/usuarios" element={<AdminUsuarios />} />
+            
           </>
         )}
         {user?.role === "secretaria" && (
@@ -62,6 +64,7 @@ function ProtectedRoutes() {
             <Route path="/asignaturas" element={<Programas />} />
             <Route path="/reportes" element={<Reportes />} />
             <Route path="/conflictos" element={<SecretariaConflictos />} />
+            
           </>
         )}
         {user?.role === "docente" && (
@@ -69,13 +72,16 @@ function ProtectedRoutes() {
             <Route path="/" element={<DocenteDashboard />} />
             <Route path="/mi-horario" element={<DocenteHorario />} />
             <Route path="/disponibilidad" element={<DocenteDisponibilidad />} />
+        
           </>
         )}
         {/* Shared routes (all roles) */}
+      
         <Route path="/asistente" element={<Asistente />} />
         <Route path="/notificaciones" element={<Notificaciones />} />
         <Route path="/configuracion" element={<Configuracion />} />
         <Route path="*" element={<NotFound />} />
+        
       </Routes>
     </AppLayout>
   );
