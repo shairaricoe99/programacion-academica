@@ -76,7 +76,6 @@ export default function AppLayout({ children }: { children: ReactNode }) {
     <div className="flex h-screen overflow-hidden bg-background">
       <CommandPalette open={searchOpen} onOpenChange={setSearchOpen} />
 
-      {/* Mobile overlay */}
       {sidebarOpen && (
         <div
           className="fixed inset-0 z-30 bg-foreground/30 backdrop-blur-sm lg:hidden"
@@ -84,7 +83,6 @@ export default function AppLayout({ children }: { children: ReactNode }) {
         />
       )}
 
-      {/* Sidebar */}
       <aside
         className={`fixed inset-y-0 left-0 z-40 flex w-56 flex-col bg-card pt-4 transition-transform duration-300 lg:static lg:translate-x-0 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
@@ -103,6 +101,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
               item.path === "/"
                 ? location.pathname === "/"
                 : location.pathname.startsWith(item.path);
+
             return (
               <Link
                 key={item.path}
@@ -114,17 +113,26 @@ export default function AppLayout({ children }: { children: ReactNode }) {
                     : "border-transparent hover:border-border hover:bg-muted/50"
                 }`}
               >
-                <span className={isActive ? "text-primary" : "text-muted-foreground group-hover:text-foreground"}>
+                <span
+                  className={
+                    isActive
+                      ? "text-primary"
+                      : "text-muted-foreground group-hover:text-foreground"
+                  }
+                >
                   {item.icon}
                 </span>
+
                 <span className="flex-1">{item.label}</span>
-                {isActive && <div className="h-6 w-1 rounded-full bg-primary" />}
+
+                {isActive && (
+                  <div className="h-6 w-1 rounded-full bg-primary" />
+                )}
               </Link>
             );
           })}
         </nav>
 
-        {/* Footer — configuración */}
         <div className="border-t border-border px-4 py-3">
           <Link
             to="/configuracion"
@@ -141,13 +149,12 @@ export default function AppLayout({ children }: { children: ReactNode }) {
         </div>
       </aside>
 
-      {/* Main content */}
       <div className="flex flex-1 flex-col overflow-hidden">
-        {/* Top header */}
         <header
           className="flex h-[72px] items-center gap-4 px-4 lg:px-6"
           style={{
-            background: "linear-gradient(135deg, hsl(358 90% 38%), hsl(358 85% 45%))",
+            background:
+              "linear-gradient(135deg, hsl(358 90% 38%), hsl(358 85% 45%))",
           }}
         >
           <button
@@ -163,6 +170,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
               alt="Universidad Libre"
               className="h-12 w-12 rounded-full border-2 border-white/20 object-cover"
             />
+
             <span className="font-display text-xl font-extrabold text-white tracking-tight">
               Universidad Libre
             </span>
@@ -177,12 +185,14 @@ export default function AppLayout({ children }: { children: ReactNode }) {
               title="Notificaciones"
             >
               <Bell size={20} />
+
               {unread > 0 && (
                 <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-white px-1 text-[10px] font-bold text-destructive">
                   {unread}
                 </span>
               )}
             </button>
+
             <button
               onClick={() => setSearchOpen(true)}
               className="rounded-lg p-2 text-white/80 hover:bg-white/10 hover:text-white"
@@ -190,6 +200,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
             >
               <Search size={20} />
             </button>
+
             <button
               onClick={() => navigate("/configuracion")}
               className="hidden sm:inline-flex rounded-lg p-2 text-white/80 hover:bg-white/10 hover:text-white"
@@ -197,19 +208,26 @@ export default function AppLayout({ children }: { children: ReactNode }) {
             >
               <Settings size={20} />
             </button>
+
             <div className="ml-2 flex items-center gap-3">
               <button
                 onClick={() => navigate("/configuracion")}
                 className="h-10 w-10 rounded-full border-2 border-white/30 bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
                 title="Mi cuenta"
               >
-                <span className="text-sm font-bold text-white">{user.initials}</span>
+                <span className="text-sm font-bold text-white">
+                  {user.initials}
+                </span>
               </button>
+
               <div className="hidden sm:block">
                 <p className="text-sm font-bold text-white">{user.name}</p>
-                <p className="text-[11px] text-white/70">{user.roleLabel}</p>
+                <p className="text-[11px] text-white/70">
+                  {user.roleLabel}
+                </p>
               </div>
             </div>
+
             <button
               onClick={handleLogout}
               className="ml-2 rounded-lg p-2 text-white/70 hover:bg-white/10 hover:text-white"
@@ -220,7 +238,9 @@ export default function AppLayout({ children }: { children: ReactNode }) {
           </div>
         </header>
 
-        <main className="flex-1 overflow-y-auto p-4 lg:p-6">{children}</main>
+        <main className="flex-1 overflow-y-auto p-4 lg:p-6">
+          {children}
+        </main>
       </div>
     </div>
   );
