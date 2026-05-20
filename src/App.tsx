@@ -31,6 +31,7 @@ import DocenteDisponibilidad from "@/pages/docente/DocenteDisponibilidad";
 // Shared
 import Notificaciones from "@/pages/Notificaciones";
 import Configuracion from "@/pages/Configuracion";
+import Asistente from "@/pages/Asistente";
 
 import NotFound from "@/pages/NotFound";
 
@@ -71,6 +72,7 @@ function ProtectedRoutes() {
           </>
         )}
         {/* Shared routes (all roles) */}
+        <Route path="/asistente" element={<Asistente />} />
         <Route path="/notificaciones" element={<Notificaciones />} />
         <Route path="/configuracion" element={<Configuracion />} />
         <Route path="*" element={<NotFound />} />
@@ -107,3 +109,4 @@ const App = () => (
 );
 
 export default App;
+
